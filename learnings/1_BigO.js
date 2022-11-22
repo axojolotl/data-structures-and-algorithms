@@ -1,16 +1,19 @@
+// performance.now() logs time in ms
+// function logTimeInMs(func){
+//     t1 = performance.now();
+//     func();
+//     t2 = performance.now()
+//     console.log(t2-t1 + "ms")
+// }
+
 // What is Good Code?
-// Good Code is Readable and Scalable
+// Good Code is Readable and Scalable. 
+// Scalability is divided into two, 
+// time (speed) and space (memory)
 
 // Scalability can be measured with Big O
-// Runtime - how long it takes to run instructions
 
-// performance.now() logs time in ms
-function logTimeInMs(func){
-    t1 = performance.now();
-    func();
-    t2 = performance.now()
-    console.log(t2-t1 + "ms")
-}
+// PART 1. TIME COMPLEXITY
 
 // As inputs grow, functions slow down, since some
 // CPUs are faster, and some are slower we need Big O
@@ -85,11 +88,38 @@ function f3(arr1, arr2){
 
 // Drop non dominant terms
 function f4(){
-    for (let n = 0; n < arr1.length; n++) { }
-    for (let m = 0; m < arr1.length; m++) {
-        for (let i = 0; i < arr1.length; i++) { }
+    for (let n = 0; n < arr.length; n++) { }
+    for (let m = 0; m < arr.length; m++) {
+        for (let i = 0; i < arr.length; i++) { }
      }
     // this is not O(n + n^2)
     // this is just O(n^2) because O(n^2)
     // because it is the dominant term
+}
+
+// O(n^3) and O(n!) means something is wrong with your code
+
+// PART 2. SPACE COMPLEXITY
+// Heap is where variables are stored
+// Stack is where we track function calls
+
+// O(1) Constant Space
+// One memory for any number of inputs
+function constantSpace(arr1){
+    for (let n = 0; n < arr1.length; n++){
+        console.log(n);
+    }
+    // This is not O(n) but it's O(1) Space
+    // because no matter how big arr1 is
+    // we only store 1 variable to the heap
+    // which is n = 0
+}
+
+function linearSpace(arr2){
+    for (let i = 0; i < arr2.length; m++){
+        arr2[i] = "new memory";
+    }
+    // This is not O(1) Space anymore
+    // because for each n input we create
+    // additional memory
 }
